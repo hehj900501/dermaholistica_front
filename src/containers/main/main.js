@@ -19,6 +19,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import myStyles from '../../css'
 import { colorBase } from '../../utils/constants'
 import MainPacientes from '../pacientes'
+import Administrador from '../administrador'
 
 const TabPanel = (props) => {
 	const { children, value, index, ...other } = props
@@ -127,8 +128,8 @@ export const MainContainer = props => {
 							empleado={empleado} />
 					</TabPanel>
 					<TabPanel value={value} index={1}>
-						{/* <MenuSuperAdmin
-							empleado={empleado} /> */}
+						<Administrador
+							empleado={empleado} />
 					</TabPanel>
 				</Fragment>
 			</main>

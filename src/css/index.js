@@ -7,6 +7,9 @@ const marginBase = 10;
 const myStyles = makeStyles( (theme) => {
 
     return {
+        ajuste: {
+            marginTop: '25px',
+        },
         backdrop: {
             zIndex: theme.zIndex.drawer + 1,
             color: '#fff',

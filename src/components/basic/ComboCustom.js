@@ -15,6 +15,7 @@ export const ComboCustom = (props) => {
     const newValue = value
 
     return (
+        options ? 
         <Autocomplete
             className={className}
             disablePortal
@@ -29,5 +30,6 @@ export const ComboCustom = (props) => {
                 return <TextField {...params} label={label} />
             }}
         />
+        :''
     )
 }
