@@ -86,7 +86,7 @@ export const MainContainer = props => {
 						<MenuIcon />
 					</IconButton>
 					<Typography variant="h6" className={classes.title}>
-						{`DERM`}
+						{`DERMAHOLISTICA`}
 					</Typography>
 
 				</Toolbar>
