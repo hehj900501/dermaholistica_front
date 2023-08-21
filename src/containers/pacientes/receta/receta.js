@@ -111,13 +111,13 @@ export const RecetaContainer = (props) => {
 				<Grid item xs={12}>
 					<Paper>
 						{
-							productosNormales && productosNormales.length > 0 ?
+							receta.productos && receta.productos.length > 0 ?
 								<Fragment>
 									<Grid item xs={12}>
 										<TableComponent
 											titulo={tituloNormal}
 											columns={columns}
-											data={productosNormales}
+											data={receta.productos}
 											actions={actions}
 											options={options}
 											components={components} />
@@ -139,7 +139,7 @@ export const RecetaContainer = (props) => {
 								: ''
 						}
 
-						{
+						{/* {
 							productosAntibioticos && productosAntibioticos.length > 0 ?
 								<Fragment>
 									<Grid item xs={12}>
@@ -195,7 +195,7 @@ export const RecetaContainer = (props) => {
 									</Grid>
 								</Fragment>
 								: ''
-						}
+						} */}
 					</Paper>
 				</Grid>
 			</Grid>

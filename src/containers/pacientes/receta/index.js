@@ -59,7 +59,8 @@ const Receta = (props) => {
     const responseProductos = await showAllProductoComercials()
     if (`${responseProductos.status}` === process.env.REACT_APP_RESPONSE_CODE_OK) {
       setProductos(responseProductos.data)
-      separarProductos()
+      //separarProductos()
+      setIsLoading(false)
     } else {
       setIsLoading(false)
     }
@@ -177,19 +178,18 @@ const Receta = (props) => {
   const separarProductos = () => {
     let productos = receta.productos
     if (productos) {
-      console.log("KAOZ", productos);
       let productosNormalesList = productos.filter(producto => {
-        return producto.tipo_medicamento === tipoMedicamentoNormalId
+        return producto.tipo_medicamento._id === tipoMedicamentoNormalId
       })
       setProductosNormales(productosNormalesList)
   
       let productosAntibioticosList = productos.filter(producto => {
-        return producto.tipo_medicamento === tipoMedicamentoAntibioticoId
+        return producto.tipo_medicamento._id === tipoMedicamentoAntibioticoId
       })
       setProductosAntibioticos(productosAntibioticosList)
   
       let productosControladosList = productos.filter(producto => {
-        return producto.tipo_medicamento === tipoMedicamentoControladoId
+        return producto.tipo_medicamento._id === tipoMedicamentoControladoId
       })
       setProductosControlados(productosControladosList)
       setIsLoading(false)

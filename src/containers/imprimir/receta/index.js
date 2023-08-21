@@ -11,6 +11,7 @@ const ImprimirReceta = () => {
 
   const {
     receta,
+    productos,
   } = location.state;
   
   console.log("KAOZ", receta);
@@ -38,6 +39,7 @@ const ImprimirReceta = () => {
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
         receta={receta}
+        productos={productos}
         edad={edad}
         onReturn={handleReturn}
         onClickImprimir={handleClickImprimir}

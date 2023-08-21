@@ -90,6 +90,7 @@ const FormImprimirReceta = (props) => {
     onClickImprimir,
     onReturn,
     show,
+    productos,
   } = props;
 
   return (
