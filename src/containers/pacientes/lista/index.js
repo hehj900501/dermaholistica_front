@@ -24,7 +24,7 @@ const Pacientes = (props) => {
 
 	const classes = myStyles()
 
-	const { 
+	const {
 		onClickGenerarReceta,
 	} = props
 
@@ -36,8 +36,9 @@ const Pacientes = (props) => {
 	const [severity, setSeverity] = useState('success')
 
 	const [nuevoPaciente, setNuevoPaciente] = useState({})
-	
-	const dataComplete = !nuevoPaciente.nombres || !nuevoPaciente.apellidos || !nuevoPaciente.telefono 
+	const [allShrink, setAllShrink] = useState(false)
+
+	const dataComplete = !nuevoPaciente.nombres || !nuevoPaciente.apellidos || !nuevoPaciente.telefono
 		|| !nuevoPaciente.email || !nuevoPaciente.fecha_nacimiento || !nuevoPaciente.sexo
 
 	const columns = [
@@ -75,19 +76,19 @@ const Pacientes = (props) => {
 		})
 	}
 
-	const handleChangeSexo = (e, newValue) => {
+	const handleChangeSexo = (e, newValue, name) => {
 		setNuevoPaciente({
-		  ...nuevoPaciente,
-		  sexo: newValue
+			...nuevoPaciente,
+			[name]: newValue
 		})
-	  }
-	
-	  const handleChangeEmail = (e) => {
+	}
+
+	const handleChangeEmail = (e) => {
 		setNuevoPaciente({
-		  ...nuevoPaciente,
-		  email: e.target.value
+			...nuevoPaciente,
+			email: e.target.value
 		})
-	  }
+	}
 
 	// const handleCloseAlert = () => {
 	// 	setOpenAlert(false)
@@ -102,16 +103,18 @@ const Pacientes = (props) => {
 			setOpenAlert(true)
 			setMessage(nuevoPaciente._id ? 'PACIENTE ACTUALIZADO' : 'PACIENTE CREADO')
 			setNuevoPaciente({})
+			setAllShrink(false)
 		}
 
 		setIsLoading(false)
 	}
 
 	const handleOnClickEditar = (event, rowData) => {
-		setNuevoPaciente(rowData)
+		setNuevoPaciente({...rowData})
+		setAllShrink(true)
 	}
 
-	const handleOnClickReceta = async(event, rowData) => {
+	const handleOnClickReceta = async (event, rowData) => {
 		setIsLoading(true)
 		const newReceta = {
 			paciente: rowData._id,
@@ -178,13 +181,13 @@ const Pacientes = (props) => {
 	const loadSexos = async () => {
 		const response = await showAllSexos()
 		if (`${response.status}` === process.env.REACT_APP_RESPONSE_CODE_OK) {
-		  setSexos(response.data)
+			setSexos(response.data)
 		}
-	  }
-	
-	  useEffect(() => {
+	}
+
+	useEffect(() => {
 		loadSexos()
-	  }, [])
+	}, [])
 
 	return (
 		<Fragment>
@@ -194,7 +197,7 @@ const Pacientes = (props) => {
 						columns={columns}
 						titulo='PACIENTES'
 						actions={actions}
-						components={components} 
+						components={components}
 						options={options}
 						nuevoPaciente={nuevoPaciente}
 						sexos={sexos}
@@ -203,9 +206,10 @@ const Pacientes = (props) => {
 						onChangeSexo={handleChangeSexo}
 						onChangeEmail={handleChangeEmail}
 						dataComplete={dataComplete}
-						// colorBase={colorBase}
-						// setIsLoading={setIsLoading}
-						/> :
+						allShrink={allShrink}
+					// colorBase={colorBase}
+					// setIsLoading={setIsLoading}
+					/> :
 					<Backdrop className={classes.backdrop} open={isLoading} >
 						<CircularProgress color="inherit" />
 					</Backdrop>

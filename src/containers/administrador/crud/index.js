@@ -119,20 +119,11 @@ const Crud = (props) => {
         })
     }
 
-    const handleChangeComboLaboratorio = (event, newValue) => {
+    const handleChangeCombo = (event, newValue, name) => {
         setIsLoading(true)
         setNewItem({
             ...newItem,
-            laboratorio: newValue ? newValue._id : newValue,
-        })
-        setIsLoading(false)
-    }
-
-    const handleChangeComboTipoMedicamento = (event, newValue) => {
-        setIsLoading(true)
-        setNewItem({
-            ...newItem,
-            tipo_medicamento: newValue ? newValue._id : newValue,
+            [name]: newValue ? newValue._id : newValue,
         })
         setIsLoading(false)
     }
@@ -169,8 +160,7 @@ const Crud = (props) => {
                 empleado={empleado}
                 onClicKNuevo={handleClicKNuevo}
                 onChange={handleChange}
-                onChangeComboLaboratorio={handleChangeComboLaboratorio}
-                onChangeComboTipoMedicamento={handleChangeComboTipoMedicamento}
+                onChangeCombo={handleChangeCombo}
                 onGuardarItem={handleGuardarItem}
                 columns={columns}
                 actions={actions}

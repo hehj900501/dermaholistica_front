@@ -15,21 +15,24 @@ export const ComboCustom = (props) => {
     const newValue = value
 
     return (
-        options ? 
-        <Autocomplete
-            className={className}
-            disablePortal
-            id="combo-box-autocomplete"
-            options={options}
-            value={newValue}
-            onChange={onChange}
-            getOptionLabel={(option) => {
-                return option.nombre
-            }}
-            renderInput={(params) => {
-                return <TextField {...params} label={label} />
-            }}
-        />
-        :''
+        options ?
+            <Autocomplete
+                className={className}
+                disablePortal
+                id="combo-box-autocomplete"
+                options={options}
+                value={newValue}
+                onChange={onChange}
+                getOptionLabel={(option) => {
+                    return option.nombre
+                }}
+                renderInput={(params) => {
+                    return <TextField {...params}
+                        variant="outlined"
+                        fullWidth
+                        label={label} />
+                }}
+            />
+            : ''
     )
 }

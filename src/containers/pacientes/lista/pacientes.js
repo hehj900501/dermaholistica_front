@@ -24,6 +24,7 @@ export const PacientesContainer = (props) => {
     actions,
     components,
     options,
+    allShrink,
   } = props
 
   const pacientes = query =>
@@ -50,6 +51,7 @@ export const PacientesContainer = (props) => {
         <Grid item xs={3}>
           <TextField
             className={classes.textField}
+            InputLabelProps={{ shrink: allShrink }}
             name="nombres"
             label="NOMBRES"
             value={nuevoPaciente.nombres}
@@ -59,6 +61,7 @@ export const PacientesContainer = (props) => {
         <Grid item xs={3}>
           <TextField
             className={classes.textField}
+            InputLabelProps={{ shrink: allShrink }}
             name="apellidos"
             label="APELLIDOS"
             value={nuevoPaciente.apellidos}
@@ -68,6 +71,7 @@ export const PacientesContainer = (props) => {
         <Grid item xs={3}>
           <TextField
             className={classes.textField}
+            InputLabelProps={{ shrink: allShrink }}
             name="telefono"
             label="TELÉFONO"
             value={nuevoPaciente.telefono}
@@ -81,6 +85,7 @@ export const PacientesContainer = (props) => {
         <Grid item xs={3}>
           <TextField
             className={classes.textField}
+            InputLabelProps={{ shrink: allShrink }}
             name="email"
             label="EMAIL"
             value={nuevoPaciente.email}
@@ -91,6 +96,7 @@ export const PacientesContainer = (props) => {
         <Grid item xs={3}>
           <TextField
             className={classes.textField}
+            InputLabelProps={{ shrink: allShrink }}
             name="fecha_nacimiento"
             label="FECHA DE NACIMIENTO"
             value={nuevoPaciente.fecha_nacimiento}
@@ -104,15 +110,17 @@ export const PacientesContainer = (props) => {
         <Grid item xs={3}>
           <FormControl variant="outlined" className={classes.formControl}>
             <ComboCustom
+            InputLabelProps={{ shrink: allShrink }}
               label='SEXO'
               value={nuevoPaciente.sexo}
-              onChange={onChangeSexo}
+              onChange={(event, value) => onChangeSexo(event, value, 'sexo')}
               options={sexos} />
           </FormControl>
         </Grid>
         <Grid item xs={6}>
           <TextField
             className={classes.textField}
+            InputLabelProps={{ shrink: allShrink }}
             name="diagnostico"
             label="DIAGNÓSTICO"
             value={nuevoPaciente.diagnostico}

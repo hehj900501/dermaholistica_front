@@ -93,6 +93,7 @@ const FormImprimirReceta = (props) => {
     productos,
   } = props;
 
+  console.log("KAOZ", receta);
   return (
     <Fragment
       aria-labelledby="simple-modal-title"
@@ -102,20 +103,15 @@ const FormImprimirReceta = (props) => {
         {
           receta.productos.map((producto, index) => {
               {
-                if ( index%5 === 0 ) {
+                if ( index%4 === 0 ) {
                   return <Fragment>
-                    <Grid container>
-                      <Grid item xs={true} className={classes.label_right}>
-                        <h3 className={classes.label_h}> { `DOCTORA` }</h3>
-                      </Grid>
-                    </Grid>
 
                     <Grid container>
-                      <Grid item xs={6} className={classes.label_right}>
-                        <h3 className={classes.label_h}> {`${receta.paciente.nombres} ${receta.paciente.apellidos}`}</h3>
+                      <Grid item xs={6} className={classes.label_left}>
+                        <h3 className={classes.label_left}> {`${receta.paciente.nombres} ${receta.paciente.apellidos}`}</h3>
                       </Grid>
-                      <Grid item xs={2} className={classes.label_right}>
-                        <h3 className={classes.label_h}> {`${edad} `}</h3>
+                      <Grid item xs={true} className={classes.label_right}>
+                        <h3 className={classes.label_h}> {`${dateToString(receta.create_date)} `}</h3>
                       </Grid>
                     </Grid>
                     
@@ -132,6 +128,7 @@ const FormImprimirReceta = (props) => {
                         {
                           `${producto.recomendacion}`
                         }
+                        <h6 className={classes.ajuste}><br /></h6>
                       </Grid>
                     </Grid>
                   </Fragment>
@@ -149,6 +146,7 @@ const FormImprimirReceta = (props) => {
                       {
                         `${producto.recomendacion}`
                       }
+                      <h6 className={classes.ajuste50}><br /></h6>
                     </Grid>
                   </Grid>
                 </Fragment> 

@@ -10,6 +10,9 @@ const myStyles = makeStyles( (theme) => {
         ajuste: {
             marginTop: '25px',
         },
+        ajuste50: {
+            marginTop: '50px',
+        },
         backdrop: {
             zIndex: theme.zIndex.drawer + 1,
             color: '#fff',
@@ -34,7 +37,7 @@ const myStyles = makeStyles( (theme) => {
         paper_principal: {
             width: "95%",
             margin: 25,
-            boxShadow: theme.shadows[5],
+            boxShadow: theme.shadows[5]
         },
         paper_item: {
             height: "98%",
