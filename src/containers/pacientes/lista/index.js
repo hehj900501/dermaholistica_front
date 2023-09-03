@@ -36,7 +36,6 @@ const Pacientes = (props) => {
 	const [severity, setSeverity] = useState('success')
 
 	const [nuevoPaciente, setNuevoPaciente] = useState({})
-	const [allShrink, setAllShrink] = useState(false)
 
 	const dataComplete = !nuevoPaciente.nombres || !nuevoPaciente.apellidos || !nuevoPaciente.telefono
 		|| !nuevoPaciente.email || !nuevoPaciente.fecha_nacimiento || !nuevoPaciente.sexo
@@ -103,7 +102,6 @@ const Pacientes = (props) => {
 			setOpenAlert(true)
 			setMessage(nuevoPaciente._id ? 'PACIENTE ACTUALIZADO' : 'PACIENTE CREADO')
 			setNuevoPaciente({})
-			setAllShrink(false)
 		}
 
 		setIsLoading(false)
@@ -111,7 +109,6 @@ const Pacientes = (props) => {
 
 	const handleOnClickEditar = (event, rowData) => {
 		setNuevoPaciente({...rowData})
-		setAllShrink(true)
 	}
 
 	const handleOnClickReceta = async (event, rowData) => {
@@ -206,7 +203,6 @@ const Pacientes = (props) => {
 						onChangeSexo={handleChangeSexo}
 						onChangeEmail={handleChangeEmail}
 						dataComplete={dataComplete}
-						allShrink={allShrink}
 					// colorBase={colorBase}
 					// setIsLoading={setIsLoading}
 					/> :
